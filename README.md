@@ -1,5 +1,7 @@
 # MySimpleOSKernel
 
+## Update 0.0.2 I Haven't still updated the readme i will do it later
+
 MyKernel is a simple, not-yet-finished operating system kernel designed for educational purposes. It is intended to provide a basic understanding of kernel development, including interrupt handling, memory management, multitasking, system calls, and file system support.
 
 ## Features
