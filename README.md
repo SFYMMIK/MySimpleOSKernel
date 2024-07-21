@@ -114,3 +114,6 @@ To build and run this project, you will need the following tools:
     ```sh
     qemu-system-i386 -kernel build/kernel.bin
     ```
+
+# This Project Is Licensed Under The GNU GENERAL PUBLIC LICENSE v3.0
+- so feel free to fork this project or to help me make it a real working ready to use kernel
