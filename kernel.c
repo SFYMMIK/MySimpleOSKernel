@@ -9,6 +9,9 @@
 #include "filesystem.h"
 #include "mouse.h"
 #include "justaccompiler.h"
+#include "clock.h"
+#include "usb.h"
+#include "detector.h"
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -26,6 +29,17 @@ char* fgets(char* str, int num, FILE* stream);
 // Entry point for the kernel
 void kernel_main() {
     terminal_initialize();
+
+     terminal_initialize();
+
+    // Initialize filesystem
+    filesystem_initialize();
+
+    // Initialize device detectors
+    init_device_detectors();
+
+    // Initialize USB system
+    usb_init();
 
     // Print the welcome message
     printf("MySimpleOSKernel BETA Has Loaded\n");
@@ -51,6 +65,20 @@ void kernel_main() {
 
     // Start the shell
     shell();
+
+    if (usb_detect_mouse()) {
+        terminal_writestring("USB mouse detected.\n");
+        init_mouse();
+    } else {
+        terminal_writestring("USB mouse not detected.\n");
+    }
+
+    if (usb_detect_keyboard()) {
+        terminal_writestring("USB keyboard detected.\n");
+    } else {
+        terminal_writestring("USB keyboard not detected.\n");
+    }
+
 }
 
 // Simple shell implementation

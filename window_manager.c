@@ -1,7 +1,9 @@
 #include "window_manager.h"
 #include "mouse.h"
 #include "terminal.h"
+#include "process.h"
 #include <stdbool.h>
+#include <string.h>
 
 #define MAX_WINDOWS 10
 
@@ -21,6 +23,7 @@ void window_manager_initialize() {
     for (int i = 0; i < MAX_WINDOWS; i++) {
         windows[i].active = false;
     }
+    terminal_writestring("Window Manager Initialized.\n");
 }
 
 void create_window(const char* title, int x, int y, int width, int height) {
@@ -56,8 +59,35 @@ void move_window(int window_id, int new_x, int new_y) {
 void update_window_manager() {
     if (active_window_id != -1 && is_left_button_held()) {
         // Move the active window with the mouse
-        int new_x = /* Calculate new X based on mouse position */;
-        int new_y = /* Calculate new Y based on mouse position */;
+        int new_x = get_mouse_x() - windows[active_window_id].width / 2;
+        int new_y = get_mouse_y() - windows[active_window_id].height / 2;
         move_window(active_window_id, new_x, new_y);
     }
+}
+
+void window_manager_execute_program(const char *program_name) {
+    if (is_gui_program(program_name)) {
+        open_window(program_name);
+    } else {
+        execute_program(program_name);
+    }
+}
+
+int is_gui_program(const char *program_name) {
+    // Simplified check for GUI program
+    // In reality, you would check the program's headers or metadata
+    if (strcmp(program_name, "gui_app") == 0) {
+        return 1;
+    }
+    return 0;
+}
+
+void open_window(const char *program_name) {
+    // Simplified window opening logic
+    terminal_writestring("Opening GUI program: ");
+    terminal_writestring(program_name);
+    terminal_writestring("\n");
+
+    // Create a window for the program
+    create_window(program_name, 10, 10, 300, 200);
 }

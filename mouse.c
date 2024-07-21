@@ -25,14 +25,33 @@ static void mouse_callback(registers_t regs) {
     }
 }
 
-void mouse_initialize() {
-    register_interrupt_handler(IRQ12, mouse_callback);
+#include "mouse.h"
+#include "io.h"
+
+// Example implementation of mouse functions
+
+static int mouse_x = 0;
+static int mouse_y = 0;
+static int left_button = 0;
+
+void init_mouse() {
+    // Initialize mouse
 }
 
-bool is_left_button_held() {
-    return left_button_held;
+int is_left_button_pressed() {
+    // Check if left mouse button is pressed
+    return left_button == 1;
 }
 
-bool is_left_button_clicked() {
-    return left_button_clicked;
+int is_left_button_held() {
+    // Check if left mouse button is held
+    return left_button == 2;
+}
+
+int get_mouse_x() {
+    return mouse_x;
+}
+
+int get_mouse_y() {
+    return mouse_y;
 }

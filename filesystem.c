@@ -8,7 +8,21 @@ static const char *prog_directory = "/prog/";
 static const char *current_directory = "/";
 
 void fs_initialize() {
-    // Initialize the filesystem structure
+    terminal_writestring("Filesystem Initialized.\n");
+        // Check for existing directories and create them if not found
+    create_default_directories();
+}
+void create_default_directories(void) {
+    // Example function to create default directories
+    terminal_writestring("Creating default directories.\n");
+
+    // Pseudo-code to create directories
+    // if (!directory_exists("/prog")) {
+    //     create_directory("/prog");
+    // }
+    // if (!directory_exists("/user")) {
+    //     create_directory("/user");
+    // }
 }
 
 const char* fs_get_current_directory() {

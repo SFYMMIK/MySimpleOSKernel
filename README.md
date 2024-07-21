@@ -1,6 +1,6 @@
 # MySimpleOSKernel
 
-## This is now a testing version of the readme cuz i do not want to update it everytime
+## Current Version 0.0.5 BETA
 
 # features
 - basic bootloader (will change it in the future to GRUB or smth)
@@ -17,10 +17,12 @@
 - basic paging and memory managment
 - simple (i thinks its still in-memory) filesystem
 - user managment with the 'useradd' command
-- ext4 filesystem support
 - basic shell with command execution
 - basic system calls
 - simple multitasking
+- detection of gui
+- (probably) working filesystem on ext4
+- (probably) working clock (with gui or cli)
 
 ## Just some older instructions on how to compile the kernel and use JustACCompiler
 
