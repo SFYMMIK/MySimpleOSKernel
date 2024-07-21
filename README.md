@@ -2,7 +2,7 @@
 
 ## Update 0.0.3
 
-MyKernel is a simple, not-yet-finished operating system kernel designed for educational purposes. It is intended to provide a basic understanding of kernel development, including interrupt handling, memory management, multitasking, system calls, and file system support.
+MySimpleOSKernel is a simple, not-yet-finished operating system kernel designed for educational/proffesional purposes. It is intended to provide a basic understanding of kernel development, including interrupt handling, memory management, multitasking, system calls, and file system support.
 
 ## Features
 
@@ -50,6 +50,14 @@ MySimpleOSKernel/
 ├── useradd.h
 └── linker.ld
 ```
+## Directory Structure Created By The Kernel Itself
+```
+    /
+├── user/ (main users directory)
+│ └── (created user by using useradd command)
+└── prog/ (main directory for programs and commands)
+```
+
 ## Prerequisites
 
 To build and run this project, you will need the following tools:
