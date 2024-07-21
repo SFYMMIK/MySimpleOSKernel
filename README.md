@@ -1,67 +1,28 @@
 # MySimpleOSKernel
 
-## Update 0.0.3
+## This is now a testing version of the readme cuz i do not want to update it everytime
 
-MySimpleOSKernel is a simple, not-yet-finished operating system kernel designed for educational/proffesional purposes. It is intended to provide a basic understanding of kernel development, including interrupt handling, memory management, multitasking, system calls, and file system support.
+# features
+- basic bootloader (will change it in the future to GRUB or smth)
+- window manager S1 which can just handle the windows
+- the kernel itself
+- its own simple compiler
+- detection of keyboards and mouse
+- detection of clicking types
+- working shell and commands (probably)
+- simple directories (/ /user/ and /prog/ and thats it)
+- mouse cursor support with a simple arrow cursor
+- basic interrupt descriptor table (IDT)
+- basic interrupt service routines (ISRs)
+- basic paging and memory managment
+- simple (i thinks its still in-memory) filesystem
+- user managment with the 'useradd' command
+- ext4 filesystem support
+- basic shell with command execution
+- basic system calls
+- simple multitasking
 
-## Features
-
-- Basic bootloader
-- Interrupt Descriptor Table (IDT)
-- Basic Interrupt Service Routines (ISRs)
-- Basic Paging and Memory Management
-- Simple Multitasking
-- Basic System Calls
-- ext4 file system support
-- Basic shell with command execution
-- User management with `useradd` command
-- Simple in-memory filesystem with directory structure
-- Basic window manager (S1) with window creation and closing
-- Mouse support with a simple cursor
-- Basic C compiler `JustACCompiler`
-
-## Directory Structure
-```
-MySimpleOSKernel/
-├── boot/
-│ └── boot.asm
-├── build/
-├── kernel.c
-├── idt.c
-├── isr.c
-├── paging.c
-├── syscall.c
-├── task.c
-├── ext4.c
-├── terminal.c
-├── window_manager.c
-├── mouse.c
-├── filesystem.c
-├── useradd.c
-├── justaccompiler.c
-├── idt.h
-├── isr.h
-├── paging.h
-├── syscall.h
-├── task.h
-├── ext4.h
-├── terminal.h
-├── window_manager.h
-├── mouse.h
-├── filesystem.h
-├── useradd.h
-├── justaccompiler.h
-└── linker.ld
-```
-## Directory Structure Created By The Kernel Itself
-```
-    /
-├── user/ (main users directory)
-│ └── (created user by using useradd command)
-└── prog/ (main directory for programs and commands)
-```
-
-## Prerequisites
+## Just some older instructions on how to compile the kernel and use JustACCompiler
 
 To build and run this project, you will need the following tools:
 
@@ -71,7 +32,7 @@ To build and run this project, you will need the following tools:
 - i686-w64-mingw32 cross-compiler toolchain
 - QEMU (for emulating the kernel)
 
-## Setting Up The Development Environment (this probably works)
+## Setting Up The Development Environment
 
 1. **Install MSYS2**
 
@@ -118,5 +79,14 @@ To build and run this project, you will need the following tools:
     qemu-system-i386 -kernel build/kernel.bin
     ```
 
-# This Project Is Licensed Under The GNU GENERAL PUBLIC LICENSE v3.0
-- so feel free to fork this project or to help me make it a real working ready to use kernel
+## Using JustACCompiler
+
+- To compile a C file using `JustACCompiler`, use the `compile` command followed by the filename:
+    ```sh
+    root@/>> compile example.c
+    ```
+
+    This will compile `example.c` and output `example.c.out`.
+
+# Remember that this project is licensed under the GNU GENERAL PUBLIC License
+- so feel free to fork this project or just help me with building this kernel :)
