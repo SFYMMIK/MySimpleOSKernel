@@ -20,7 +20,7 @@ MyKernel is a simple, not-yet-finished operating system kernel designed for educ
 - Mouse support with a simple cursor
 
 ## Directory Structure
-
+```
 MySimpleOSKernel/
 ├── boot/
 │ └── boot.asm
@@ -49,7 +49,7 @@ MySimpleOSKernel/
 ├── filesystem.h
 ├── useradd.h
 └── linker.ld
-
+```
 ## Prerequisites
 
 To build and run this project, you will need the following tools:
