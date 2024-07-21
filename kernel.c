@@ -8,6 +8,7 @@
 #include "window_manager.h"
 #include "filesystem.h"
 #include "mouse.h"
+#include "justaccompiler.h"
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -45,6 +46,9 @@ void kernel_main() {
     // Initialize the mouse
     mouse_initialize();
 
+    // Initialize ext4 filesystem
+    ext4_initialize();
+
     // Start the shell
     shell();
 }
@@ -65,7 +69,7 @@ void execute_command(const char *command) {
     if (strncmp(command, "echo", 4) == 0) {
         printf("%s\n", command + 5);
     } else if (strncmp(command, "help", 4) == 0) {
-        printf("Available commands: echo, help, exit, color, prog, dir\n");
+        printf("Available commands: echo, help, exit, color, prog, dir, compile\n");
     } else if (strncmp(command, "exit", 4) == 0) {
         printf("Exiting shell...\n");
         break;
@@ -74,24 +78,32 @@ void execute_command(const char *command) {
     } else if (strncmp(command, "prog", 4) == 0) {
         fs_execute_program(command + 5);
     } else if (strncmp(command, "dir", 3) == 0) {
-        fs_list_directory();
+        fs_list_directory(command + 4);
+    } else if (strncmp(command, "compile", 7) == 0) {
+        char source_file[128];
+        char output_file[128];
+        sscanf(command + 8, "%s %s", source_file, output_file);
+        compile(source_file, output_file);
     } else {
         printf("Unknown command: %s\n", command);
     }
 }
 
-// Function to print the shell prompt
+// Function to print the prompt
 void print_prompt() {
-    printf("root@/%s>> ", fs_get_current_directory());
+    printf("root@/>> ");
 }
 
-// Function to change the text color
+// Function to change text color based on the given color name
 void change_color(const char *color) {
     if (strcmp(color, "yellow") == 0) {
         terminal_setcolor(VGA_COLOR_YELLOW);
         printf("Wow Somebody Here Must Like Sunny Days\n");
-    } else if (strcmp(color, "red") == 0 || strcmp(color, "blue") == 0 || strcmp(color, "cyan") == 0 || strcmp(color, "pink") == 0) {
-        terminal_setcolor(VGA_COLOR_RED);  // Change to the correct color
+    } else if (strcmp(color, "red") == 0 ||
+               strcmp(color, "blue") == 0 ||
+               strcmp(color, "cyan") == 0 ||
+               strcmp(color, "pink") == 0) {
+        terminal_setcolor(VGA_COLOR_RED); // Modify as needed for other colors
         printf("Well That Was Unexpected\n");
     } else if (strcmp(color, "green") == 0) {
         terminal_setcolor(VGA_COLOR_GREEN);
@@ -101,15 +113,21 @@ void change_color(const char *color) {
     }
 }
 
-// Simple implementation of fgets
+// Simple fgets implementation
 char* fgets(char* str, int num, FILE* stream) {
-    int i = 0;
-    char c;
-
-    while ((c = getchar()) != '\n' && c != EOF && i < num - 1) {
-        str[i++] = c;
-    }
-
-    str[i] = '\0';
+    // Implementation to read input from the terminal
+    // ...
     return str;
+}
+
+void kernel_main(void) {
+    terminal_initialize();
+    
+    // Initialize device detectors
+    init_device_detectors();
+    
+    // Other kernel initialization code
+    while (1) {
+        // Main kernel loop
+    }
 }

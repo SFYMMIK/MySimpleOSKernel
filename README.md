@@ -12,12 +12,13 @@ MySimpleOSKernel is a simple, not-yet-finished operating system kernel designed 
 - Basic Paging and Memory Management
 - Simple Multitasking
 - Basic System Calls
-- Placeholder for ext4 file system support
+- ext4 file system support
 - Basic shell with command execution
 - User management with `useradd` command
 - Simple in-memory filesystem with directory structure
 - Basic window manager (S1) with window creation and closing
 - Mouse support with a simple cursor
+- Basic C compiler `JustACCompiler`
 
 ## Directory Structure
 ```
@@ -37,6 +38,7 @@ MySimpleOSKernel/
 ├── mouse.c
 ├── filesystem.c
 ├── useradd.c
+├── justaccompiler.c
 ├── idt.h
 ├── isr.h
 ├── paging.h
@@ -48,6 +50,7 @@ MySimpleOSKernel/
 ├── mouse.h
 ├── filesystem.h
 ├── useradd.h
+├── justaccompiler.h
 └── linker.ld
 ```
 ## Directory Structure Created By The Kernel Itself

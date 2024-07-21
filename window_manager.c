@@ -1,68 +1,63 @@
 #include "window_manager.h"
+#include "mouse.h"
 #include "terminal.h"
+#include <stdbool.h>
 
-static int window_count = 0;
-static int cursor_x = 40;
-static int cursor_y = 12;
+#define MAX_WINDOWS 10
 
 typedef struct {
-    int x, y, width, height;
-    char title[32];
+    int id;
+    char title[256];
+    int x, y;
+    int width, height;
     bool active;
-} Window;
+} window_t;
 
-static Window windows[10];
+static window_t windows[MAX_WINDOWS];
+static int window_count = 0;
+static int active_window_id = -1;
 
 void window_manager_initialize() {
-    // Initialize some windows
-    windows[0] = (Window){10, 5, 20, 10, "Window 1", true};
-    window_count = 1;
-    // Draw windows
-    for (int i = 0; i < window_count; i++) {
-        draw_window(&windows[i]);
+    for (int i = 0; i < MAX_WINDOWS; i++) {
+        windows[i].active = false;
     }
 }
 
-void window_manager_update_cursor(int x, int y) {
-    // Clear the old cursor
-    terminal_putentryat(' ', VGA_COLOR_LIGHT_GREY, cursor_x, cursor_y);
-    cursor_x = x;
-    cursor_y = y;
-    // Draw the new cursor
-    terminal_putentryat('.', VGA_COLOR_WHITE, cursor_x, cursor_y);
-}
+void create_window(const char* title, int x, int y, int width, int height) {
+    if (window_count < MAX_WINDOWS) {
+        window_t* window = &windows[window_count];
+        window->id = window_count;
+        strncpy(window->title, title, sizeof(window->title) - 1);
+        window->x = x;
+        window->y = y;
+        window->width = width;
+        window->height = height;
+        window->active = true;
+        window_count++;
+        active_window_id = window->id;
 
-void window_manager_handle_click(int x, int y) {
-    for (int i = 0; i < window_count; i++) {
-        if (x >= windows[i].x && x < windows[i].x + windows[i].width &&
-            y >= windows[i].y && y < windows[i].y + 1) {  // Assuming close button is on the title bar
-            windows[i].active = false;
-            clear_window(&windows[i]);
-            return;
-        }
+        // Draw window border
+        terminal_draw_rect(window->x, window->y, window->width, window->height);
+        terminal_draw_string(window->title, window->x + 2, window->y + 1);
     }
 }
 
-void draw_window(Window *win) {
-    if (!win->active) return;
-
-    for (int y = 0; y < win->height; y++) {
-        for (int x = 0; x < win->width; x++) {
-            if (y == 0 || y == win->height - 1 || x == 0 || x == win->width - 1) {
-                terminal_putentryat('#', VGA_COLOR_LIGHT_GREY, win->x + x, win->y + y);
-            } else if (y == 0 && x < strlen(win->title) + 2) {
-                terminal_putentryat(win->title[x - 1], VGA_COLOR_LIGHT_GREY, win->x + x, win->y + y);
-            } else {
-                terminal_putentryat(' ', VGA_COLOR_LIGHT_GREY, win->x + x, win->y + y);
-            }
-        }
+void move_window(int window_id, int new_x, int new_y) {
+    if (window_id >= 0 && window_id < MAX_WINDOWS && windows[window_id].active) {
+        window_t* window = &windows[window_id];
+        window->x = new_x;
+        window->y = new_y;
+        // Redraw window
+        terminal_draw_rect(window->x, window->y, window->width, window->height);
+        terminal_draw_string(window->title, window->x + 2, window->y + 1);
     }
 }
 
-void clear_window(Window *win) {
-    for (int y = 0; y < win->height; y++) {
-        for (int x = 0; x < win->width; x++) {
-            terminal_putentryat(' ', VGA_COLOR_BLACK, win->x + x, win->y + y);
-        }
+void update_window_manager() {
+    if (active_window_id != -1 && is_left_button_held()) {
+        // Move the active window with the mouse
+        int new_x = /* Calculate new X based on mouse position */;
+        int new_y = /* Calculate new Y based on mouse position */;
+        move_window(active_window_id, new_x, new_y);
     }
 }
