@@ -1,10 +1,14 @@
 # MySimpleOSKernel
 
-## Current Version 0.0.5 BETA
+## Current Version 0.0.6 BETA
+
+## Working On: command to create/delete directiories and files, no more messy files in this repo.
+
+## Bugfixes: system commands fixed, compiler has its own command to compile as it should have had long before. 
 
 # features
 - basic bootloader (will change it in the future to GRUB or smth)
-- window manager S1 which can just handle the windows
+- window manager S1 which can just handle the windows and has basic functions
 - the kernel itself
 - its own simple compiler
 - detection of keyboards and mouse
@@ -23,6 +27,7 @@
 - detection of gui
 - (probably) working filesystem on ext4
 - (probably) working clock (with gui or cli)
+- 'te' short for 'text editor' is like nano but on this kernel
 
 ## Just some older instructions on how to compile the kernel and use JustACCompiler
 

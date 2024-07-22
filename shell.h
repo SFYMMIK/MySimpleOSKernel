@@ -3,5 +3,9 @@
 
 void shell_init();
 void shell_run();
+void te(const char* filename);
+void writecommands();
+void compile(const char* filename);
+void useradd(const char* username);
 
 #endif
