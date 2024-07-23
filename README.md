@@ -34,62 +34,38 @@
 - 'root' for just being root
 - 'root -u' executing a command as root but without being root
 
-## Just some older instructions on how to compile the kernel and use JustACCompiler
+## New updated instructions on how to compile (mainly for arch/arch-based linux distros)
 
-To build and run this project, you will need the following tools:
+## you need 
+- i686-elf-gcc
+- make
+- glibc
 
-- MSYS2 (Unix-like environment for Windows)
-- GNU Make
-- NASM (Netwide Assembler)
-- i686-w64-mingw32 cross-compiler toolchain
-- QEMU (for emulating the kernel)
+## How to install i686-elf-gcc:
+just type:
+```sh
+yay -S i686-elf-gcc
+```
+- But if you do not have yay installed here is a quick guide on how to install it:
+```sh
+sudo pacman -Sy base-devel git
+```
+```sh
+git clone https://aur.archlinux.org/yay.git
+```
+```sh
+cd ~/yay
+```
+```sh
+makepkg -si
+```
+## Making it an iso:
 
-## Setting Up The Development Environment
-
-1. **Install MSYS2**
-
-    - Download and install MSYS2 from the [official website](https://www.msys2.org/).
-
-    - Update the package database and base packages:
-    ```sh
-    pacman -Syu
-    ```
-
-    - Close and reopen the MSYS2 terminal, then run:
-    ```sh
-    pacman -Su
-    ```
-
-2. **Install The Needed Packages**
-    ```sh
-    pacman -S base-devel mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain
-    pacman -S nasm
-    ```
-
-3. **Verify The Toolchain Installation**
-    - Open the "MSYS2 MinGW 32-bit" terminal and run:
-    ```sh
-    i686-w64-mingw32-gcc --version
-    ```
-
-## Building The Kernel
-
-1. **Go To The Directory Of The Kernel**
-    ```sh
-    cd /home/example-user/MySimpleOSKernel/
-    ```
-
-2. **Build The Kernel**
-    ```sh
-    make
-    ```
-
-## Running The Kernel
-
-- Example Using QEMU:
-    ```sh
-    qemu-system-i386 -kernel build/kernel.bin
-    ```
+just type make:
+```sh
+make
+```
+and it should return the .iso file
 
 ## Using JustACCompiler
 
