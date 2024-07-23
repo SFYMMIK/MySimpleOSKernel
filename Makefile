@@ -27,6 +27,7 @@ all: iso
 
 # Compile the kernel
 $(KERNEL_OBJ): $(KERNEL_SRC)
+	@mkdir -p $(BUILD)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Link the kernel
