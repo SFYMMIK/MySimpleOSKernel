@@ -5,7 +5,7 @@
 #include "window_manager.h"
 #include "ext4.h"
 #include <string.h>
-#include "stdio.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 static size_t terminal_row;
@@ -94,9 +94,6 @@ void handle_command(const char* command) {
     if (strncmp(command, "compile ", 8) == 0) {
         const char* filename = command + 8;
         justaccompiler_compile(filename);
-    } else if (strcmp(command, "color --yellow") == 0) {
-        terminal_setcolor(vga_entry_color(VGA_COLOR_YELLOW, VGA_COLOR_BLACK));
-        printf("Wow Somebody Here Must Like Sunny Days\n");
     } else if (strcmp(command, "color --red") == 0) {
         terminal_setcolor(vga_entry_color(VGA_COLOR_RED, VGA_COLOR_BLACK));
         printf("Well That Was Unexpected\n");

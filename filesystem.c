@@ -1,7 +1,7 @@
 #include "filesystem.h"
 #include "terminal.h"
 #include <string.h>
-#include "stdio.h"
+#include <stdio.h>
 
 static const char *root_directory = "/";
 static const char *prog_directory = "/prog/";
