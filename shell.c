@@ -112,15 +112,21 @@ void change_directory(const char* path) {
 
 void changeuser(const char* username) {
     char password[256];
-    if (is_root()) {
-        get_password(password, sizeof(password));
-        if (authenticate(username, password)) {
-            printf("User changed to %s.\n", username);
-        } else {
-            printf("Authentication failed.\n");
-        }
+    get_password(password, sizeof(password));
+    if (authenticate(username, password)) {
+        printf("User changed to %s.\n", username);
     } else {
-        printf("Only root can change users.\n");
+        printf("Authentication failed.\n");
+    }
+}
+
+void root_command() {
+    char password[256];
+    get_password(password, sizeof(password));
+    if (authenticate("root", password)) {
+        printf("User changed to root.\n");
+    } else {
+        printf("Authentication failed.\n");
     }
 }
 
@@ -176,13 +182,7 @@ void shell_run() {
         } else if (strncmp(command, "changeuser ", 11) == 0) {
             changeuser(command + 11); // Pass the username to changeuser function
         } else if (strcmp(command, "root") == 0) {
-            char password[256];
-            get_password(password, sizeof(password));
-            if (authenticate("root", password)) {
-                printf("User changed to root.\n");
-            } else {
-                printf("Authentication failed.\n");
-            }
+            root_command();
         } else if (strncmp(command, "root -u ", 8) == 0) {
             root_u_command(command + 8); // Pass the command to root_u_command function
         } else {
