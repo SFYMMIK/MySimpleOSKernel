@@ -9,7 +9,7 @@ SRC=src
 ISO=iso
 
 # Kernel source files
-KERNEL_SRC=$(SRC)/kernel.c
+KERNEL_SRC=$/kernel.c
 KERNEL_OBJ=$(BUILD)/kernel.o
 
 # Kernel binary
