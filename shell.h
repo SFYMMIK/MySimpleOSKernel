@@ -8,4 +8,7 @@ void writecommands();
 void compile(const char* filename);
 void useradd(const char* username);
 
+// Dynamically added commands placeholder
+void dynamic_commands();
+
 #endif

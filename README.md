@@ -1,10 +1,10 @@
 # MySimpleOSKernel
 
-## Current Version 0.0.6 BETA
+## Current Version 0.0.7 BETA
 
-## Working On: command to create/delete directiories and files, no more messy files in this repo.
+## Working On: command to create/delete directiories and files, no more messy files in this repo, root and user password being protected, commands 'root' 'root -u' and 'cd' because they are still not finished
 
-## Bugfixes: system commands fixed, compiler has its own command to compile as it should have had long before. 
+## Bugfixes: system commands fixed again.
 
 # features
 - basic bootloader (will change it in the future to GRUB or smth)
@@ -28,6 +28,11 @@
 - (probably) working filesystem on ext4
 - (probably) working clock (with gui or cli)
 - 'te' short for 'text editor' is like nano but on this kernel
+- non-sys command execution
+- '.rse' (Really Simple Executable)
+- 'cd' for change directory made almost like on linux
+- 'root' for just being root
+- 'root -u' executing a command as root but without being root
 
 ## Just some older instructions on how to compile the kernel and use JustACCompiler
 
