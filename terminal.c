@@ -5,7 +5,7 @@
 #include "window_manager.h"
 #include "ext4.h"
 #include <string.h>
-#include <stdio.h>
+#include "stdio.h"
 #include <stdlib.h>
 
 static size_t terminal_row;
