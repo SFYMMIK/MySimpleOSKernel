@@ -59,7 +59,7 @@ cd ~/yay
 ```sh
 makepkg -si
 ```
-## Making it an iso:
+## Making the kernel an iso:
 
 just type make:
 ```sh
@@ -74,7 +74,7 @@ and it should return the .iso file
     root@/>> compile example.c
     ```
 
-    This will compile `example.c` and output `example.c.out`.
+    This will compile `example.c` and output `example.rse`.
 
 # Remember that this project is licensed under the GNU GENERAL PUBLIC License
 - so feel free to fork this project or just help me with building this kernel :)
