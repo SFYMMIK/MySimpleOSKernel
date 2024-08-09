@@ -2,7 +2,7 @@
 
 ## Current Version 0.0.7 BETA
 
-## Working On: command to create/delete directiories and files, no more messy files in this repo, root and user password being protected, commands 'root' 'root -u' and 'cd' because they are still not finished
+## Working On: command to create/delete directiories and files, no more messy files in this repo, root and user password being protected, commands 'root' 'root -u' and 'cd' because they are still not finished, raspberry pi support/ARM support.
 
 ## Bugfixes: system commands fixed again.
 
