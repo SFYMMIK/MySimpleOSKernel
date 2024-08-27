@@ -1,3 +1,84 @@
+# MySimpleOSKernel Project Has Ended.
+## Here are reasons on why i ended development on it:
+- school in poland where i live is starting soon in like 3 - 4 days as im writing this on 27.08.2024
+- Trouble with stdio.h not wanting to compile, im not going to fucking write a copy of stdio.h.
+- I am only dev for this project.
+
+## but the probably-ARM-compatible version will be posted here in a .zip folder
+
+## scroll to the bottom to see the readme before closing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # MySimpleOSKernel
 
 ## Current Version 0.0.7 BETA
